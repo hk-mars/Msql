@@ -1,0 +1,3 @@
+name,char
+age,int
+--------

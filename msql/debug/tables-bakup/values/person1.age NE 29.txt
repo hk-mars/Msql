@@ -1,0 +1,6 @@
+'mars',30,'male'
+'hacker',30,'male'
+'hacker',14,'female'
+'hacker',15,'female'
+'hacker',31,'female'
+'hacker',32,'female'

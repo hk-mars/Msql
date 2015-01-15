@@ -1,0 +1,3 @@
+'mars',30,'male'
+'mars',31,'male'
+'star',20,'female'

@@ -1,0 +1,1493 @@
+clsb
+cdebug/msql
+
+[main]..
+
+[load_sql2_bnf_file]..
+file docs/sql2-bnf.txt opened, size 70860 bytes.
+[load_sql2_bnf_file]..done. 
+
+
+[push_bnf_into_htab]..
+hash table 1511 entries, 1044 entries used, 467 entries free. 
+[push_bnf_into_htab]..done. 
+
+
+
+[make_bnf_tree]... root: <token> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1074 entries used, 437 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+[push_kw_htab]..
+[push_kw_htab]..done. 
+
+kw_htab table 307 entries, 277 entries used, 30 entries free. 
+
+
+[dbg_lex]..
+
+[check_lex]..
+sql string: i id id123 id_123 id_123_456_abc  
+[search token]..., key: i 
+i token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: id 
+id token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: id123 
+id123 token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: id_123 
+id_123 token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: id_123_456_abc 
+id_123_456_abc token was found in tree. 
+token name: <regular identifier> 
+
+sql tokens found: i id id123 id_123 id_123_456_abc  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: ABSOLUTE  C ON ZONE ADA NAME UNNAMED  
+[search token]..., key: ABSOLUTE 
+ABSOLUTE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: C 
+C token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ON 
+ON token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ZONE 
+ZONE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ADA 
+ADA token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: NAME 
+NAME token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: UNNAMED 
+UNNAMED token was found in hash table.
+token name: <key word> 
+
+sql tokens found: ABSOLUTE  C ON ZONE ADA NAME UNNAMED  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: 1234.56 0.789 123456789 1234. .56789 12E3 12.4E5  
+[search token]..., key: 1234.56 
+1234.56 token was found in tree. 
+token name: <exact numeric literal 1> 
+
+[search token]..., key: 0.789 
+0.789 token was found in tree. 
+token name: <exact numeric literal 1> 
+
+[search token]..., key: 123456789 
+123456789 token was found in tree. 
+token name: <unsigned integer> 
+
+[search token]..., key: 1234. 
+1234. token was found in tree. 
+token name: <exact numeric literal 1> 
+
+[search token]..., key: .56789 
+.56789 token was found in tree. 
+token name: <exact numeric literal 2> 
+
+[search token]..., key: 12E3 
+12E3 token was found in tree. 
+token name: <approximate numeric literal> 
+
+[search token]..., key: 12.4E5 
+12.4E5 token was found in tree. 
+token name: <approximate numeric literal> 
+
+sql tokens found: 1234.56 0.789 123456789 1234. .56789 12E3 12.4E5  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: N'hello'  
+[search token]..., key: N'hello' 
+N'hello' token was found in tree. 
+token name: <national character string literal> 
+
+sql tokens found: N'hello'  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: B'11001010' B''  
+[search token]..., key: B'11001010' 
+B'11001010' token was found in tree. 
+token name: <bit string literal> 
+
+[search token]..., key: B'' 
+B'' token was found in tree. 
+token name: <bit string literal> 
+
+sql tokens found: B'11001010' B''  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: X'0123456789ABCDEFabcdef' X'' X'FF'  
+[search token]..., key: X'0123456789ABCDEFabcdef' 
+X'0123456789ABCDEFabcdef' token was found in tree. 
+token name: <hex string literal> 
+
+[search token]..., key: X'' 
+X'' token was found in tree. 
+token name: <hex string literal> 
+
+[search token]..., key: X'FF' 
+X'FF' token was found in tree. 
+token name: <hex string literal> 
+
+sql tokens found: X'0123456789ABCDEFabcdef' X'' X'FF'  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: 'hello' 'world2014'  
+[search token]..., key: 'hello' 
+'hello' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: 'world2014' 
+'world2014' token was found in tree. 
+token name: <character string literal> 
+
+sql tokens found: 'hello' 'world2014'  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: '1987-11-11' '1984-4-1'  
+[search token]..., key: '1987-11-11' 
+'1987-11-11' token was found in tree. 
+token name: <date string> 
+
+[search token]..., key: '1984-4-1' 
+'1984-4-1' token was found in tree. 
+token name: <date string> 
+
+sql tokens found: '1987-11-11' '1984-4-1'  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: '20:49:30'  
+[search token]..., key: '20:49:30' 
+'20:49:30' token was found in tree. 
+token name: <time string> 
+
+sql tokens found: '20:49:30'  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: '2014-01' '201401'  
+[search token]..., key: '2014-01' 
+'2014-01' token was found in tree. 
+token name: <interval string> 
+
+[search token]..., key: '201401' 
+'201401' token was found in tree. 
+token name: <interval string> 
+
+sql tokens found: '2014-01' '201401'  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: """" "delimiterID_123"  
+[search token]..., key: """" 
+"""" token was found in tree. 
+token name: <delimited identifier> 
+
+[search token]..., key: "delimiterID_123" 
+"delimiterID_123" token was found in tree. 
+token name: <delimited identifier> 
+
+sql tokens found: """" "delimiterID_123"  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: " % & ' ( ) * + , - . / : ; < = > ? _ |  
+[search token]..., key: " 
+" token was found in tree. 
+token name: <double quote> 
+
+[search token]..., key: % 
+% token was found in tree. 
+token name: <percent> 
+
+[search token]..., key: & 
+& token was found in tree. 
+token name: <ampersand> 
+
+[search token]..., key: ' 
+' token was found in tree. 
+token name: <quote> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+[search token]..., key: * 
+* token was found in tree. 
+token name: <asterisk> 
+
+[search token]..., key: + 
++ token was found in tree. 
+token name: <plus sign> 
+
+[search token]..., key: , 
+, token was found in tree. 
+token name: <comma> 
+
+[search token]..., key: - 
+- token was found in tree. 
+token name: <minus sign> 
+
+[search token]..., key: . 
+. token was found in tree. 
+token name: <exact numeric literal 2> 
+
+[search token]..., key: / 
+/ token was found in tree. 
+token name: <solidus> 
+
+[search token]..., key: : 
+: token was found in tree. 
+token name: <colon> 
+
+[search token]..., key: ; 
+; token was found in tree. 
+token name: <semicolon> 
+
+[search token]..., key: < 
+< token was found in tree. 
+token name: <less than operator> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: > 
+> token was found in tree. 
+token name: <greater than operator> 
+
+[search token]..., key: ? 
+? token was found in tree. 
+token name: <question mark> 
+
+[search token]..., key: _ 
+_ token was found in tree. 
+token name: <underscore> 
+
+[search token]..., key: | 
+| token was found in tree. 
+token name: <vertical bar> 
+
+sql tokens found: " % & ' ( ) * + , - . / : ; < = > ? _ |  
+
+[check_lex]..done. 
+
+
+[check_lex]..
+sql string: <> >= <= || .. [ ]  
+[search token]..., key: <> 
+<> token was found in tree. 
+token name: <not equals operator> 
+
+[search token]..., key: >= 
+>= token was found in tree. 
+token name: <greater than or equals operator> 
+
+[search token]..., key: <= 
+<= token was found in tree. 
+token name: <less than or equals operator> 
+
+[search token]..., key: || 
+|| token was found in tree. 
+token name: <concatenation operator> 
+
+[search token]..., key: .. 
+.. token was found in tree. 
+token name: <double period> 
+
+[search token]..., key: [ 
+[ token was found in tree. 
+token name: <left bracket> 
+
+[search token]..., key: ] 
+] token was found in tree. 
+token name: <right bracket> 
+
+sql tokens found: <> >= <= || .. [ ]  
+
+[check_lex]..done. 
+
+[dbg_lex]..done. 
+
+
+
+[make_bnf_tree]... root: <value expression primary> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1082 entries used, 429 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <value expression> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1085 entries used, 426 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <predicate> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1092 entries used, 419 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <table definition> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1121 entries used, 390 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <drop table statement> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1121 entries used, 390 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <alter table statement> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1122 entries used, 389 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <SQL data change statement> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1126 entries used, 385 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <table expression> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1140 entries used, 371 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <query primary> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1149 entries used, 362 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <query term> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1149 entries used, 362 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+
+[make_bnf_tree]... root: <query expression> 
+
+[make_bnf_tree], done. 
+
+hash table 1511 entries, 1149 entries used, 362 entries free. 
+
+
+[make_graph]... 
+
+[make_graph], done. 
+
+
+make all lex and syntax trees done. 
+
+
+[dbg_syntax]..
+check sql syntax..., for: <table definition> 
+
+[check_lex]..
+sql string: CREATE TABLE person ( name CHAR )  
+[search token]..., key: CREATE 
+CREATE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CHAR 
+CHAR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+sql tokens found: CREATE TABLE person ( name CHAR )  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <right paren> 
+
+
+solution path FOUND for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <right paren> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: CREATE TABLE person ( name CHAR , age INT , born DATE )  
+[search token]..., key: CREATE 
+CREATE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CHAR 
+CHAR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: , 
+, token was found in tree. 
+token name: <comma> 
+
+[search token]..., key: age 
+age token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: INT 
+INT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: , 
+, token was found in tree. 
+token name: <comma> 
+
+[search token]..., key: born 
+born token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: DATE 
+DATE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+sql tokens found: CREATE TABLE person ( name CHAR , age INT , born DATE )  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <comma> <regular identifier> INT <comma> <regular identifier> DATE <right paren> 
+
+
+solution path FOUND for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <comma> <regular identifier> INT <comma> <regular identifier> DATE <right paren> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: CREATE TABLE person ( name CHAR ( 10 ) , sex CHAR ( 1 ) )  
+[search token]..., key: CREATE 
+CREATE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CHAR 
+CHAR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: 10 
+10 token was found in tree. 
+token name: <unsigned integer> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+[search token]..., key: , 
+, token was found in tree. 
+token name: <comma> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CHAR 
+CHAR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: 1 
+1 token was found in tree. 
+token name: <unsigned integer> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+sql tokens found: CREATE TABLE person ( name CHAR ( 10 ) , sex CHAR ( 1 ) )  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <left paren> <unsigned integer> <right paren> <comma> <regular identifier> CHAR <left paren> <unsigned integer> <right paren> <right paren> 
+
+
+solution path FOUND for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <left paren> <unsigned integer> <right paren> <comma> <regular identifier> CHAR <left paren> <unsigned integer> <right paren> <right paren> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: CREATE TABLE person ( name CHAR ) ON COMMIT DELETE ROWS  
+[search token]..., key: CREATE 
+CREATE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CHAR 
+CHAR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+[search token]..., key: ON 
+ON token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: COMMIT 
+COMMIT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: DELETE 
+DELETE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ROWS 
+ROWS token was found in hash table.
+token name: <key word> 
+
+sql tokens found: CREATE TABLE person ( name CHAR ) ON COMMIT DELETE ROWS  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <right paren> ON COMMIT DELETE ROWS 
+
+
+solution path FOUND for: 
+CREATE TABLE <regular identifier> <left paren> <regular identifier> CHAR <right paren> ON COMMIT DELETE ROWS 
+
+[check_syntax]..done. 
+
+check sql syntax..., for: <drop table statement> 
+
+[check_lex]..
+sql string: DROP TABLE person RESTRICT  
+[search token]..., key: DROP 
+DROP token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: RESTRICT 
+RESTRICT token was found in hash table.
+token name: <key word> 
+
+sql tokens found: DROP TABLE person RESTRICT  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+DROP TABLE <regular identifier> RESTRICT 
+
+
+solution path FOUND for: 
+DROP TABLE <regular identifier> RESTRICT 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: DROP TABLE person CASCADE  
+[search token]..., key: DROP 
+DROP token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CASCADE 
+CASCADE token was found in hash table.
+token name: <key word> 
+
+sql tokens found: DROP TABLE person CASCADE  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+DROP TABLE <regular identifier> CASCADE 
+
+
+solution path FOUND for: 
+DROP TABLE <regular identifier> CASCADE 
+
+[check_syntax]..done. 
+
+check sql syntax for <drop table statement>, done. 
+check sql syntax..., for: <alter table statement> 
+
+[check_lex]..
+sql string: ALTER TABLE person ADD COLUMN sex CHAR  
+[search token]..., key: ALTER 
+ALTER token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: ADD 
+ADD token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: COLUMN 
+COLUMN token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: CHAR 
+CHAR token was found in hash table.
+token name: <key word> 
+
+sql tokens found: ALTER TABLE person ADD COLUMN sex CHAR  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+ALTER TABLE <regular identifier> ADD COLUMN <regular identifier> CHAR 
+
+
+solution path FOUND for: 
+ALTER TABLE <regular identifier> ADD COLUMN <regular identifier> CHAR 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: ALTER TABLE person ALTER COLUMN sex DROP DEFAULT  
+[search token]..., key: ALTER 
+ALTER token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: TABLE 
+TABLE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: ALTER 
+ALTER token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: COLUMN 
+COLUMN token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: DROP 
+DROP token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: DEFAULT 
+DEFAULT token was found in hash table.
+token name: <key word> 
+
+sql tokens found: ALTER TABLE person ALTER COLUMN sex DROP DEFAULT  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+ALTER TABLE <regular identifier> ALTER COLUMN <regular identifier> DROP DEFAULT 
+
+
+solution path FOUND for: 
+ALTER TABLE <regular identifier> ALTER COLUMN <regular identifier> DROP DEFAULT 
+
+[check_syntax]..done. 
+
+check sql syntax for <alter table statement>, done. 
+check sql syntax..., for: <SQL data change statement> 
+
+[check_lex]..
+sql string: INSERT INTO person VALUES ( 'mars' , 30 )  
+[search token]..., key: INSERT 
+INSERT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: INTO 
+INTO token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: VALUES 
+VALUES token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: , 
+, token was found in tree. 
+token name: <comma> 
+
+[search token]..., key: 30 
+30 token was found in tree. 
+token name: <unsigned integer> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+sql tokens found: INSERT INTO person VALUES ( 'mars' , 30 )  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+INSERT INTO <regular identifier> VALUES <left paren> <character string literal> <comma> <unsigned integer> <right paren> 
+
+
+solution path FOUND for: 
+INSERT INTO <regular identifier> VALUES <left paren> <character string literal> <comma> <unsigned integer> <right paren> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: DELETE FROM person WHERE name = 'mars'  
+[search token]..., key: DELETE 
+DELETE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+sql tokens found: DELETE FROM person WHERE name = 'mars'  
+
+[check_lex]..done. 
+
+DELETE FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+DELETE FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> 
+
+
+solution path FOUND for: 
+DELETE FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: UPDATE person SET name = 'fumin' WHERE name = 'mars'  
+[search token]..., key: UPDATE 
+UPDATE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: SET 
+SET token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'fumin' 
+'fumin' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+sql tokens found: UPDATE person SET name = 'fumin' WHERE name = 'mars'  
+
+[check_lex]..done. 
+
+UPDATE <regular identifier> SET <regular identifier> <equals operator> <character string literal> WHERE <regular identifier> <equals operator> <character string literal> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+UPDATE <regular identifier> SET <regular identifier> <equals operator> <character string literal> WHERE <regular identifier> <equals operator> <character string literal> 
+
+
+solution path FOUND for: 
+UPDATE <regular identifier> SET <regular identifier> <equals operator> <character string literal> WHERE <regular identifier> <equals operator> <character string literal> 
+
+[check_syntax]..done. 
+
+check sql syntax for <SQL data change statement>, done. 
+check sql syntax..., for: <query expression> 
+
+[check_lex]..
+sql string: SELECT * FROM person  
+[search token]..., key: SELECT 
+SELECT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: * 
+* token was found in tree. 
+token name: <asterisk> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+sql tokens found: SELECT * FROM person  
+
+[check_lex]..done. 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+SELECT <asterisk> FROM <regular identifier> 
+
+
+solution path FOUND for: 
+SELECT <asterisk> FROM <regular identifier> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: SELECT * FROM person WHERE age = 30  
+[search token]..., key: SELECT 
+SELECT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: * 
+* token was found in tree. 
+token name: <asterisk> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: age 
+age token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 30 
+30 token was found in tree. 
+token name: <unsigned integer> 
+
+sql tokens found: SELECT * FROM person WHERE age = 30  
+
+[check_lex]..done. 
+
+SELECT <asterisk> FROM <regular identifier> WHERE <regular identifier> <equals operator> <unsigned integer> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+SELECT <asterisk> FROM <regular identifier> WHERE <regular identifier> <equals operator> <unsigned integer> 
+
+
+solution path FOUND for: 
+SELECT <asterisk> FROM <regular identifier> WHERE <regular identifier> <equals operator> <unsigned integer> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: SELECT sex  FROM person WHERE name = 'mars' OR age = 30  
+[search token]..., key: SELECT 
+SELECT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: OR 
+OR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: age 
+age token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 30 
+30 token was found in tree. 
+token name: <unsigned integer> 
+
+sql tokens found: SELECT sex  FROM person WHERE name = 'mars' OR age = 30  
+
+[check_lex]..done. 
+
+SELECT <regular identifier> FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> OR <regular identifier> <equals operator> <unsigned integer> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> OR <regular identifier> <equals operator> <unsigned integer> 
+
+
+solution path FOUND for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> OR <regular identifier> <equals operator> <unsigned integer> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: SELECT sex  FROM person WHERE name = 'mars' AND age = 30  
+[search token]..., key: SELECT 
+SELECT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: AND 
+AND token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: age 
+age token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 30 
+30 token was found in tree. 
+token name: <unsigned integer> 
+
+sql tokens found: SELECT sex  FROM person WHERE name = 'mars' AND age = 30  
+
+[check_lex]..done. 
+
+SELECT <regular identifier> FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> AND <regular identifier> <equals operator> <unsigned integer> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> AND <regular identifier> <equals operator> <unsigned integer> 
+
+
+solution path FOUND for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <regular identifier> <equals operator> <character string literal> AND <regular identifier> <equals operator> <unsigned integer> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: SELECT sex  FROM person WHERE ( name = 'mars' AND age = 30 )  
+[search token]..., key: SELECT 
+SELECT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: AND 
+AND token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: age 
+age token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 30 
+30 token was found in tree. 
+token name: <unsigned integer> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+sql tokens found: SELECT sex  FROM person WHERE ( name = 'mars' AND age = 30 )  
+
+[check_lex]..done. 
+
+SELECT <regular identifier> FROM <regular identifier> WHERE <left paren> <regular identifier> <equals operator> <character string literal> AND <regular identifier> <equals operator> <unsigned integer> <right paren> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <left paren> <regular identifier> <equals operator> <character string literal> AND <regular identifier> <equals operator> <unsigned integer> <right paren> 
+
+
+solution path FOUND for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <left paren> <regular identifier> <equals operator> <character string literal> AND <regular identifier> <equals operator> <unsigned integer> <right paren> 
+
+[check_syntax]..done. 
+
+
+[check_lex]..
+sql string: SELECT sex  FROM person WHERE ( name = 'mars' OR age = 30 )  
+[search token]..., key: SELECT 
+SELECT token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: sex 
+sex token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: FROM 
+FROM token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: person 
+person token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: WHERE 
+WHERE token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: ( 
+( token was found in tree. 
+token name: <left paren> 
+
+[search token]..., key: name 
+name token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 'mars' 
+'mars' token was found in tree. 
+token name: <character string literal> 
+
+[search token]..., key: OR 
+OR token was found in hash table.
+token name: <key word> 
+
+[search token]..., key: age 
+age token was found in tree. 
+token name: <regular identifier> 
+
+[search token]..., key: = 
+= token was found in tree. 
+token name: <equals operator> 
+
+[search token]..., key: 30 
+30 token was found in tree. 
+token name: <unsigned integer> 
+
+[search token]..., key: ) 
+) token was found in tree. 
+token name: <right paren> 
+
+sql tokens found: SELECT sex  FROM person WHERE ( name = 'mars' OR age = 30 )  
+
+[check_lex]..done. 
+
+SELECT <regular identifier> FROM <regular identifier> WHERE <left paren> <regular identifier> <equals operator> <character string literal> OR <regular identifier> <equals operator> <unsigned integer> <right paren> 
+
+
+[check_syntax]..
+try find solution path in syntax tree..., for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <left paren> <regular identifier> <equals operator> <character string literal> OR <regular identifier> <equals operator> <unsigned integer> <right paren> 
+
+
+solution path FOUND for: 
+SELECT <regular identifier> FROM <regular identifier> WHERE <left paren> <regular identifier> <equals operator> <character string literal> OR <regular identifier> <equals operator> <unsigned integer> <right paren> 
+
+[check_syntax]..done. 
+
+check sql syntax for <query expression>, done. 
+[dbg_syntax]..done. 
+
+[main]..done. 
+

@@ -1,0 +1,147 @@
+
+What's new of MSQL ?
+
+[2015-01-15]
+1.MSQL stack-execution engine(SEE) v1.0 was released. (stack.c, stack.h, executor.c, executor.h)
+2.MSQL searching engine(SE) v1.0 wars released. (se.c, se.h)
+3.MSQL memory garbage collector(GC) v1.0 was released. (gc.c, gc.h)
+4.[MSQL v1.0 Test Cases] and [MSQL 1.0 Codes Report] was released.
+
+[2014-03-03]
+1.MSQL parser v1.0 was released. (parser.c, parser.h, lex.c, lex.h, syntax.c, syntax.h, char.h, sql2_bnf.txt)
+
+
+[MSQL v1.0 Test Cases]
+
+[Passed]
+CREATE TABLE person1 ( name CHAR )
+CREATE TABLE person2 ( name CHAR , age INT , born DATE ) 
+CREATE TABLE person3 ( name CHAR ( 10 ) , height DEC , weight FLOAT )
+DROP TABLE person1 RESTRICT
+DROP TABLE person2 CASCADE
+ALTER TABLE person1 ADD COLUMN sex CHAR
+ALTER TABLE person1 ALTER COLUMN sex SET DEFAULT NULL
+ALTER TABLE person1 ALTER COLUMN sex DROP DEFAULT
+ALTER TABLE person1 DROP COLUMN sex CASCADE
+ALTER TABLE person1 DROP COLUMN name RESTRICT
+ALTER TABLE person1 DROP COLUMN age RESTRICT
+
+CREATE TABLE person1 ( name CHAR , age INT , sex CHAR ) 
+CREATE TABLE person2 ( name CHAR , age INT , sex CHAR ) 
+CREATE TABLE person3 ( name CHAR , age INT , sex CHAR ) 
+CREATE TABLE person4 ( name CHAR , age INT , sex CHAR ) 
+
+INSERT INTO person1 VALUES ( 'mars' , 30 , 'male' )
+INSERT INTO person1 VALUES ( 'jojo' , 29 , 'female' )
+INSERT INTO person1 VALUES ( 'hacker' , 30 , 'male' )
+INSERT INTO person1 VALUES ( 'hacker' , 14 , 'female' )
+INSERT INTO person1 VALUES ( 'hacker' , 15 , 'female' )
+INSERT INTO person1 VALUES ( 'hacker' , 31 , 'female' )
+INSERT INTO person1 VALUES ( 'hacker' , 32 , 'female' )
+
+INSERT INTO person2 VALUES ( 'mars' , 30 , 'male' )
+INSERT INTO person2 VALUES ( 'mars' , 31 , 'male' )
+INSERT INTO person2 VALUES ( 'star' , 20 , 'female' )
+
+INSERT INTO person1 VALUES ( 'mars' , 30 , 'male' )
+INSERT INTO person1 VALUES ( 'mars' , 30 + 20 )
+INSERT INTO person1 VALUES ( 'mars' , 30 + 20 * 2 )
+INSERT INTO person1 VALUES ( 'mars' , 30 / 3 + 20 * 2 - 4 )
+INSERT INTO person1 VALUES ( 'mars' , 4 + 30 / 3 + 20 * 2 - 4 + 0 )
+INSERT INTO person1 VALUES ( ( 30 + 20 ) , 'mars' ) 
+INSERT INTO person1 VALUES ( ( 30 + 20 * 2 ) , 'mars' ) 
+INSERT INTO person1 VALUES ( ( 30 / 3 + 20 * 2 ) , 'mars' )
+INSERT INTO person1 VALUES ( ( 30 / 3 + 20 * 2 - 8 ) , 'mars' )
+INSERT INTO person1 VALUES ( ( ( 30 ) + 20 ) , 'mars' ) 
+
+DELETE FROM person1 WHERE name = 'mars' 
+UPDATE person1 SET name = 'fumin' WHERE name = 'mars'
+
+SELECT * FROM person1
+SELECT * FROM person1 WHERE name = 'hacker'
+SELECT * FROM person1 WHERE age = 30
+SELECT * FROM person1 WHERE name = 'mars' AND age = 30 
+SELECT * FROM person1 WHERE name = 'hacker' AND sex = 'male'  
+SELECT * FROM person1 WHERE age = 30 OR sex = 'female'  
+SELECT * FROM person1 WHERE name = 'mars' OR age = 30 AND sex = 'male' 
+SELECT * FROM person1 WHERE name = 'mars' AND age = 30 OR sex = 'female' 
+SELECT * FROM person1 WHERE name = 'mars' OR age = 30 OR sex = 'male'
+
+SELECT * FROM person1 WHERE age < 20 
+SELECT * FROM person1 WHERE sex = 'female' AND age < 20 
+SELECT * FROM person1 WHERE sex = 'female' AND age > 20
+SELECT * FROM person1 WHERE sex = 'female' AND age >= 20 
+SELECT * FROM person1 WHERE sex = 'female' AND age <= 20 
+SELECT * FROM person1 WHERE sex = 'female' OR age > 20
+SELECT * FROM person1 WHERE NOT age = 20
+SELECT * FROM person1 WHERE age = 20
+
+SELECT * FROM person2
+SELECT * FROM person1 , person2 , person3 , person4
+
+SELECT * FROM person1 , person2 WHERE person1 . name = person2 . name AND person1 . age = 30
+SELECT * FROM person1 , person2 WHERE person1 . name = person2 . name AND person2 . age = 30
+SELECT * FROM person1 , person2 WHERE person1 . name = person2 . name OR person1 . name = 'jojo'
+
+SELECT * FROM person1 , person2 WHERE person1 . age = person2 . age
+SELECT * FROM person1 , person2 WHERE NOT person1 . age = person2 . age
+
+SELECT *  FROM person1 WHERE ( name = 'mars' AND age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' AND age = 30 ) OR sex = 'female'
+SELECT *  FROM person1 WHERE ( name = 'mars' ) AND ( age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' AND sex = 'male' ) OR ( age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' AND ( sex = 'male' ) )
+
+[BUG.mem]
+SELECT * FROM person1 WHERE name = 'mars' AND age = 30 AND sex = 'male'
+SELECT * FROM person1 WHERE name = 'mars' AND age = 30 AND sex = 'female'
+SELECT * FROM person1 WHERE name = 'mars' AND age = 30 AND sex = 'male' AND sex = 'female'
+SELECT * FROM person1 WHERE name = 'mars' AND age = 30 AND sex = 'male' OR sex = 'female'
+SELECT *  FROM person1 WHERE ( name = 'mars' AND sex = 'male' ) AND ( age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' OR sex = 'male' ) OR ( age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' OR sex = 'male' ) AND ( age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' AND ( sex = 'male' ) ) OR ( age = 30 )
+SELECT *  FROM person1 WHERE ( name = 'mars' AND ( sex = 'male' ) ) AND ( age = 30 )
+
+[TBD]
+SELECT * FROM person1 , person2 WHERE person1 . age > person2 . age
+SELECT * FROM person1 , person2 WHERE person1 . age >= person2 . age
+SELECT * FROM person1 , person2 WHERE person1 . age < person2 . age
+SELECT * FROM person1 , person2 WHERE person1 . age <= person2 . age
+
+SELECT sex  FROM person1 WHERE ...
+SELECT age  FROM person1 WHERE ...
+SELECT name  FROM person1 WHERE ...
+SELECT name , age FROM person1 WHERE ...
+
+
+[MSQL 1.0 Codes Report]
+File                                 Lines
+---------------------------------------------------------------------
+src\bin_tree.c                         277
+inc\bin_tree.h                          47
+inc\char.h                              63
+inc\common.h                            31
+src\executor.c                        1726
+inc\executor.h                          12
+src\gc.c                               124
+inc\gc.h                                11
+src\hsearch.c                          222
+inc\hsearch.h                           57
+src\lex.c                              566
+inc\lex.h                               35
+src\main.c                              18
+src\parser.c                          1624
+inc\parser.h                            13
+src\se.c                              2426
+inc\se.h                                89
+src\stack.c                           4364
+inc\stack.h                           1644
+src\syntax.c                           526
+inc\syntax.h                            22
+src\tree.c                             151
+inc\tree.h                              30
+what_is_new.txt                        117
+
+Total Files:           24
+Total Lines:        14195

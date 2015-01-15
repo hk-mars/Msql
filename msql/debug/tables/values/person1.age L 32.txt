@@ -1,0 +1,6 @@
+'hacker',31
+'mars',30
+'jojo',29
+'hacker',30
+'hacker',14
+'hacker',15

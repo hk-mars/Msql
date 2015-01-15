@@ -1,0 +1,5 @@
+'hacker',30
+'hacker',14
+'hacker',15
+'hacker',31
+'hacker',32
