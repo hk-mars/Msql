@@ -4,4 +4,4 @@ MSQL is a hackable SQL database language,it would be designed to include below f
 3. A subsystem searching engine.
 4. A hackable parser for integrating with other languages like C/Lisp/Perl.
 
-Please See "msql/what_is_new.txt" to know more of this hack.
+Please see "msql/what_is_new.txt" to know more of this hack.
