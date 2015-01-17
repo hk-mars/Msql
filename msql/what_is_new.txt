@@ -2,9 +2,10 @@
 What's new of MSQL ?
 
 [2015-01-15]
-1.MSQL stack-execution engine(SEE) v1.0 was released. (stack.c, stack.h, executor.c, executor.h)
-2.MSQL searching engine(SE) v1.0 wars released. (se.c, se.h)
-3.MSQL memory garbage collector(GC) v1.0 was released. (gc.c, gc.h)
+MSQL v1.0 released.
+1.MSQL stack-execution engine(SEE) was released. (stack.c, stack.h, executor.c, executor.h)
+2.MSQL searching engine(SE) wars released. (se.c, se.h)
+3.MSQL memory garbage collector(GC) was released. (gc.c, gc.h)
 4.[MSQL v1.0 Test Cases] and [MSQL 1.0 Codes Report] was released.
 
 [2014-03-03]
